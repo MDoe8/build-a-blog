@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <nav>
+            <a href="/">Main Blog Page</a>
+             <a href="/blogentry">Add a Blog Entry</a>
+        </nav>
+        
+        {% block content %}
+        {% endblock %}
+    </body>
+{% if blog %}
+<p>{{blog.body}}</p>
+{% endif %}
+{% if blogs|length==0 and blog == none %}
+    <p>no blogs yet</p>
+{% else %}
+{% for blog in blogs %}
+    <li><a href="/blog?id={{blog.id}}">{{blog.title}}</a></li>
+{% endfor %}
+{% endif %}
+
+</html>
+
